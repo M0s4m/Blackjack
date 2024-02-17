@@ -52,9 +52,9 @@ def generateDealerCard():
 generateDealerCard()
 generateDealerCard()
 generateDealerCard()
-print(dealerTotalCardValue)
 
-for i in dealerTotalCardValue:
-    dealerSum = dealerSum + i
 
-print(dealerSum)
+# def calculateSum():
+    # for i in dealerTotalCardValue:
+        # dealerSum = dealerSum + i
+
