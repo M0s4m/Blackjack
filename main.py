@@ -2,6 +2,7 @@ import random
 
 #Takes the inital bet amount
 bet = int(input("Enter Bet Amount: $"))
+winBet = bet * 2
 
 #Recods the dealers cards and values
 dealerCards = []
@@ -130,31 +131,35 @@ while(True):
     #Gives the player another card
     if(choice == 1):
 
-        player = random.choice(cards)
-        playerCards.append(player)
+        generatePlayerCard()
+        playerSum = sum(playerTotalCardValue)
+        print(f'\nPlayer Cards: {playerCards} Total: {playerSum}')
 
-        print(f'Player Cards: {playerCards} Total: {playerSum}')
+        if (playerSum >= 22):
+            print("\nPlayer has busted!")
+            print(f"You have lost: ${bet}")
+            break
+        else:
+            generateDealerCard()
+            print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')
+            if (dealerSum >= 22):
+                print("\nDealer has busted!")
+                print(f"\You have won: ${winBet}")
 
     #Reveals the dealers second card
     elif(choice == 2):
 
-        dealer = random.choice(cards)
-        dealerCards.append(dealer)
-
+        generateDealerCard()
         print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')
         print(f'\nPlayer Cards: {playerCards} Total: {playerSum}')
 
     #Doubles the bet, Reveals the dealers second card, Gives the player another card
     elif(choice == 3):
 
-        player = random.choice(cards)
-        playerCards.append(player)
-
         doubleBet = bet * 2
 
-        dealer = random.choice(cards)
-        dealerCards.append(dealer)
-
+        generatePlayerCard()
+        generateDealerCard()
         print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')   
         print(f'\nNew bet: ${doubleBet}')
         print(f'Player Cards: {playerCards} Total: {playerSum}')
@@ -164,3 +169,6 @@ while(True):
         break
     else:
         print("Please pick a valid option!")
+
+for i in playerTotalCardValue:
+    playerSum = playerSum + i
