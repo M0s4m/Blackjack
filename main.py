@@ -2,122 +2,118 @@ import random
 
 #Takes the inital bet amount
 bet = int(input("Enter Bet Amount: $"))
-winBet = bet * 2
+win_bet = bet * 2
 
 #Recods the dealers cards and values
-dealerCards = []
-dealerTotalCardValue = []
-dealerSum = 0
+dealer_cards = []
+dealer_total_card_value = []
+dealer_sum = 0
 #Records the players cards and values
-playerCards = []
-playerTotalCardValue = []
-playerSum = 0
+player_cards = []
+player_total_card_value = []
+player_sum = 0
 
 # suits = (0,1,2,3)
 cards = (1,2,3,4,5,6,7,8,9,10,11,12,13)
 
-#Picks a random card from 13 possibilites and appends and prints it to the total (dealerCards)
-def generateDealerCard():
+#Picks a random card from 13 possibilites and appends and prints it to the total (dealer_cards)
+def generate_dealer_card():
     dealer = random.choice(cards)
 
     if(dealer == 1):
-        dealerCards.append("A")
-        dealerTotalCardValue.append(1)
+        dealer_cards.append("A")
+        dealer_total_card_value.append(11)
     elif(dealer == 2):
-        dealerCards.append("2")   
-        dealerTotalCardValue.append(2)
+        dealer_cards.append("2")   
+        dealer_total_card_value.append(2)
     elif(dealer == 3):
-        dealerCards.append("3")  
-        dealerTotalCardValue.append(3) 
+        dealer_cards.append("3")  
+        dealer_total_card_value.append(3) 
     elif(dealer == 4):
-        dealerCards.append("4")   
-        dealerTotalCardValue.append(4)
+        dealer_cards.append("4")   
+        dealer_total_card_value.append(4)
     elif(dealer == 5):
-        dealerCards.append("5")   
-        dealerTotalCardValue.append(5)
+        dealer_cards.append("5")   
+        dealer_total_card_value.append(5)
     elif(dealer == 6):
-        dealerCards.append("6")   
-        dealerTotalCardValue.append(6)
+        dealer_cards.append("6")   
+        dealer_total_card_value.append(6)
     elif(dealer == 7):
-        dealerCards.append("7")   
-        dealerTotalCardValue.append(7)
+        dealer_cards.append("7")   
+        dealer_total_card_value.append(7)
     elif(dealer == 8):
-        dealerCards.append("8")   
-        dealerTotalCardValue.append(8)
+        dealer_cards.append("8")   
+        dealer_total_card_value.append(8)
     elif(dealer == 9):
-        dealerCards.append("9")   
-        dealerTotalCardValue.append(9)
+        dealer_cards.append("9")   
+        dealer_total_card_value.append(9)
     elif(dealer == 10):
-        dealerCards.append("10")
-        dealerTotalCardValue.append(10)
+        dealer_cards.append("10")
+        dealer_total_card_value.append(10)
     elif(dealer == 11):
-        dealerCards.append("J")   
-        dealerTotalCardValue.append(10)
+        dealer_cards.append("J")   
+        dealer_total_card_value.append(10)
     elif(dealer == 12):
-        dealerCards.append("Q")   
-        dealerTotalCardValue.append(10)
+        dealer_cards.append("Q")   
+        dealer_total_card_value.append(10)
     else:
-        dealerCards.append("K")
-        dealerTotalCardValue.append(10)
+        dealer_cards.append("K")
+        dealer_total_card_value.append(10)
 
-generateDealerCard()
+generate_dealer_card()
+dealer_sum = sum(dealer_total_card_value)
 
-for i in dealerTotalCardValue:
-    dealerSum = dealerSum + i
+print(f'\nDealer First Card: {dealer_cards} Total: {dealer_sum}')
 
-print(f'\nDealer First Card: {dealerCards} Total: {dealerSum}')
-
-#Picks a random card from 13 possibilites and appends and prints it to the total (playerCards)
-def generatePlayerCard():
+#Picks a random card from 13 possibilites and appends and prints it to the total (player_cards)
+def generate_player_card():
     player = random.choice(cards)
 
     if(player == 1):
-        playerCards.append("A")
-        playerTotalCardValue.append(1)
+        player_cards.append("A")
+        player_total_card_value.append(11)
     elif(player == 2):
-        playerCards.append("2")   
-        playerTotalCardValue.append(2)
+        player_cards.append("2")   
+        player_total_card_value.append(2)
     elif(player == 3):
-        playerCards.append("3")  
-        playerTotalCardValue.append(3) 
+        player_cards.append("3")  
+        player_total_card_value.append(3) 
     elif(player == 4):
-        playerCards.append("4")   
-        playerTotalCardValue.append(4)
+        player_cards.append("4")   
+        player_total_card_value.append(4)
     elif(player == 5):  
-        playerCards.append("5")   
-        playerTotalCardValue.append(5)
+        player_cards.append("5")   
+        player_total_card_value.append(5)
     elif(player == 6):
-        playerCards.append("6")   
-        playerTotalCardValue.append(6)
+        player_cards.append("6")   
+        player_total_card_value.append(6)
     elif(player == 7):
-        playerCards.append("7")   
-        playerTotalCardValue.append(7)
+        player_cards.append("7")   
+        player_total_card_value.append(7)
     elif(player == 8):
-        playerCards.append("8")   
-        playerTotalCardValue.append(8)
+        player_cards.append("8")   
+        player_total_card_value.append(8)
     elif(player == 9):
-        playerCards.append("9")   
-        playerTotalCardValue.append(9)
+        player_cards.append("9")   
+        player_total_card_value.append(9)
     elif(player == 10):
-        playerCards.append("10")
-        playerTotalCardValue.append(10)
+        player_cards.append("10")
+        player_total_card_value.append(10)
     elif(player == 11):
-        playerCards.append("J")   
-        playerTotalCardValue.append(10)
+        player_cards.append("J")   
+        player_total_card_value.append(10)
     elif(player == 12):
-        playerCards.append("Q")   
-        playerTotalCardValue.append(10)
+        player_cards.append("Q")   
+        player_total_card_value.append(10)
     else:
-        playerCards.append("K")
-        playerTotalCardValue.append(10)
+        player_cards.append("K")
+        player_total_card_value.append(10)
 
-generatePlayerCard()
-generatePlayerCard()
+generate_player_card()
+generate_player_card()
+player_sum = sum(player_total_card_value)
 
-for i in playerTotalCardValue:
-    playerSum = playerSum + i
-
-print(f'\nPlayer Cards: {playerCards} Total: {playerSum}')
+print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
 
 #Choice menu
 print('''\nPick from the following:
@@ -131,44 +127,82 @@ while(True):
     #Gives the player another card
     if(choice == 1):
 
-        generatePlayerCard()
-        playerSum = sum(playerTotalCardValue)
-        print(f'\nPlayer Cards: {playerCards} Total: {playerSum}')
+        generate_player_card()
+        player_sum = sum(player_total_card_value)
 
-        if (playerSum >= 22):
-            print("\nPlayer has busted!")
+        for i in player_total_card_value:
+            if(player_sum > 21) and (i == 11):
+                player_sum = player_sum - 10
+            
+        if (player_sum >= 22):
+            print("\nOutcome: Player has busted!")
             print(f"You have lost: ${bet}")
             break
-        else:
-            generateDealerCard()
-            print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')
-            if (dealerSum >= 22):
-                print("\nDealer has busted!")
-                print(f"\You have won: ${winBet}")
+        
+        print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
 
-    #Reveals the dealers second card
+    #Plays the rest of the dealers cards
     elif(choice == 2):
 
-        generateDealerCard()
-        print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')
-        print(f'\nPlayer Cards: {playerCards} Total: {playerSum}')
+        generate_dealer_card()
+        dealer_sum = sum(dealer_total_card_value)
 
-    #Doubles the bet, Reveals the dealers second card, Gives the player another card
+        for i in dealer_total_card_value:
+            if(dealer_sum > 21) and (i == 11):
+                dealer_sum = dealer_sum - 10
+
+        print(f'\nDealer Cards: {dealer_cards} Total: {dealer_sum}')
+        print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
+        
+        if (dealer_sum <= 16):
+            generate_dealer_card()
+            dealer_sum = sum(dealer_total_card_value)
+            print(f'\nDealer Cards: {dealer_cards} Total: {dealer_sum}')
+
+        if(dealer_sum == player_sum):
+            print("Outcome: Push")
+            
+        elif(dealer_sum > player_sum) and (dealer_sum <= 21):
+            print("\nOutcome: Player has lost!")
+            print(f"You have lost: ${bet}")
+            break
+        elif(player_sum > dealer_sum ) and (player_sum <= 21):
+            print("\nOutcome: Dealer has lost!")
+            print(f"You have Won: ${win_bet}")                
+            break
+        elif(dealer_sum >= 22):
+            print("\nOutcome: Dealer has busted!")
+            print(f"You have won: ${win_bet}")
+            break
+
+    #Doubles the bet, Gives the player another card, Plays the rest of the dealers cards
     elif(choice == 3):
 
-        doubleBet = bet * 2
+        double_win_bet = win_bet * 2
+        generate_player_card()
 
-        generatePlayerCard()
-        generateDealerCard()
-        print(f'\nDealer Cards: {dealerCards} Total: {dealerSum}')   
-        print(f'\nNew bet: ${doubleBet}')
-        print(f'Player Cards: {playerCards} Total: {playerSum}')
+        print(f"\nYour new bet is ${win_bet}")
+        print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
+
+        if (dealer_sum <= 16):
+            generate_dealer_card()
+            dealer_sum = sum(dealer_total_card_value)
+            print(f'\nDealer Cards: {dealer_cards} Total: {dealer_sum}')
+
+        if(dealer_sum > player_sum) and (dealer_sum <= 21):
+            print("\nOutcome: Player has lost!")
+            print(f"You have lost: ${win_bet}")
+        elif(player_sum > dealer_sum ) and (player_sum <= 21):
+            print("\nOutcome: Dealer has lost!")
+            print(f"You have Won: ${double_win_bet}")         
+            break       
+        elif(dealer_sum >= 22):
+            print("\nOutcome: Dealer has busted!")
+            print(f"You have won: ${double_win_bet}")
+            break
 
     #Exits the choice menu
     elif(choice == 4):
         break
     else:
         print("Please pick a valid option!")
-
-for i in playerTotalCardValue:
-    playerSum = playerSum + i
