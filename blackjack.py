@@ -5,9 +5,16 @@ player_name = input("Please enter your name: ")
 f = open("player_data.txt", "r")
 player_data = f.readlines()
 
+if(player_name + "\n" not in player_data):
+    f = open("player_data.txt", "a")
+    f.write(f"\n{player_name} \n1000")
+    f.close()
+
+f = open("player_data.txt", "r")
+player_data = f.readlines()
+print(player_data)
 player_index = player_data.index(player_name + "\n")
 balance_index = player_index + 1
-
 player_balance = player_data[balance_index]
 
 print(f"Hello! {player_name} Your blance is ${player_balance}")
@@ -157,7 +164,7 @@ while(True):
             print("\nOutcome: Player has busted!")
             print(f"You have lost: ${bet}")
 
-            player_data[balance_index]  = f'{player_balance - bet}\n'
+            player_data[balance_index]  = f'{int(player_balance) - bet}\n'
             with open('player_data.txt', 'w') as file:
                 file.writelines(player_data)
             print(f"Your new balance is ${player_data[balance_index]}")
