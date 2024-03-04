@@ -1,8 +1,29 @@
 import random
 
+player_name = input("Please enter your name: ")
+
+f = open("player_data.txt", "r")
+player_data = f.readlines()
+
+player_index = player_data.index(player_name + "\n")
+balance_index = player_index + 1
+
+player_balance = player_data[balance_index]
+
+print(f"Hello! {player_name} Your blance is ${player_balance}")
+
 #Takes the inital bet amount
 bet = int(input("Enter Bet Amount: $"))
 win_bet = bet * 2
+double_win_bet = win_bet * 2
+
+while(True):
+    if(bet > int(player_balance)):
+        print("Your bet amount has exceeded your current balance please enter a smaller amount.")
+        print(f"Your blance is ${player_balance}")
+        bet = int(input("Enter Bet Amount: $"))
+    else:
+        break
 
 #Recods the dealers cards and values
 dealer_cards = []
@@ -13,7 +34,6 @@ player_cards = []
 player_total_card_value = []
 player_sum = 0
 
-# suits = (0,1,2,3)
 cards = (1,2,3,4,5,6,7,8,9,10,11,12,13)
 
 #Picks a random card from 13 possibilites and appends and prints it to the total (dealer_cards)
@@ -124,9 +144,8 @@ print('''\nPick from the following:
 
 while(True):
     choice = int(input("\nChoice: "))
-    #Gives the player another card
-    if(choice == 1):
 
+    if(choice == 1):
         generate_player_card()
         player_sum = sum(player_total_card_value)
 
@@ -137,13 +156,16 @@ while(True):
         if (player_sum >= 22):
             print("\nOutcome: Player has busted!")
             print(f"You have lost: ${bet}")
+
+            player_data[balance_index]  = f'{player_balance - bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")
             break
         
         print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
 
-    #Plays the rest of the dealers cards
     elif(choice == 2):
-
         generate_dealer_card()
         dealer_sum = sum(dealer_total_card_value)
 
@@ -161,24 +183,33 @@ while(True):
 
         if(dealer_sum == player_sum):
             print("Outcome: Push")
-            
+            break
         elif(dealer_sum > player_sum) and (dealer_sum <= 21):
             print("\nOutcome: Player has lost!")
             print(f"You have lost: ${bet}")
+            player_data[balance_index]  = f'{int(player_balance) - bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")
             break
         elif(player_sum > dealer_sum ) and (player_sum <= 21):
             print("\nOutcome: Dealer has lost!")
-            print(f"You have Won: ${win_bet}")                
+            print(f"You have Won: ${win_bet}")  
+            player_data[balance_index]  = f'{int(player_balance) + win_bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")              
             break
         elif(dealer_sum >= 22):
             print("\nOutcome: Dealer has busted!")
             print(f"You have won: ${win_bet}")
+            player_data[balance_index]  = f'{int(player_balance) + win_bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")               
             break
 
-    #Doubles the bet, Gives the player another card, Plays the rest of the dealers cards
     elif(choice == 3):
-
-        double_win_bet = win_bet * 2
         generate_player_card()
 
         print(f"\nYour new bet is ${win_bet}")
@@ -191,16 +222,27 @@ while(True):
 
         if(dealer_sum > player_sum) and (dealer_sum <= 21):
             print("\nOutcome: Player has lost!")
-            print(f"You have lost: ${win_bet}")
+            print(f"You have lost: ${bet}")
+            player_data[balance_index]  = f'{int(player_balance) - bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")
         elif(player_sum > dealer_sum ) and (player_sum <= 21):
             print("\nOutcome: Dealer has lost!")
-            print(f"You have Won: ${double_win_bet}")         
+            print(f"You have Won: ${double_win_bet}")   
+            player_data[balance_index]  = f'{int(player_balance) + double_win_bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")         
             break       
         elif(dealer_sum >= 22):
             print("\nOutcome: Dealer has busted!")
             print(f"You have won: ${double_win_bet}")
+            player_data[balance_index]  = f'{int(player_balance) + double_win_bet}\n'
+            with open('player_data.txt', 'w') as file:
+                file.writelines(player_data)
+            print(f"Your new balance is ${player_data[balance_index]}")         
             break
-
     #Exits the choice menu
     elif(choice == 4):
         break
