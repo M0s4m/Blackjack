@@ -249,7 +249,6 @@ while(True):
             with open('player_data.txt', 'w') as file:
                 file.writelines(player_data)
             print(f"Your new balance is ${player_data[balance_index]}")         
-            break
     # exits the choice menu
     elif(choice == 4):
         break
