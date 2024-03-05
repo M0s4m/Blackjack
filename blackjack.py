@@ -1,23 +1,23 @@
 import random
 
-player_name = input("Please enter your name: ")
+# takes the users name (username)
+username = input("Please enter your username: ")
 
 f = open("player_data.txt", "r")
 player_data = f.readlines()
 
-if(player_name + "\n" not in player_data):
+if(username + "\n" not in player_data):
     f = open("player_data.txt", "a")
-    f.write(f"\n{player_name} \n1000")
+    f.write(f"\n{username}\n1000")
     f.close()
 
 f = open("player_data.txt", "r")
 player_data = f.readlines()
-print(player_data)
-player_index = player_data.index(player_name + "\n")
+player_index = player_data.index(username + "\n")
 balance_index = player_index + 1
 player_balance = player_data[balance_index]
 
-print(f"Hello! {player_name} Your blance is ${player_balance}")
+print(f"Hello! {username} Your blance is ${player_balance}")
 
 #Takes the inital bet amount
 bet = int(input("Enter Bet Amount: $"))
@@ -142,7 +142,7 @@ player_sum = sum(player_total_card_value)
 
 print(f'\nPlayer Cards: {player_cards} Total: {player_sum}')
 
-#Choice menu
+# choice menu
 print('''\nPick from the following:
       1. Hit
       2. Stand
@@ -250,7 +250,7 @@ while(True):
                 file.writelines(player_data)
             print(f"Your new balance is ${player_data[balance_index]}")         
             break
-    #Exits the choice menu
+    # exits the choice menu
     elif(choice == 4):
         break
     else:
